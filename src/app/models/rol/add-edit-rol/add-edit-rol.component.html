@@ -1,0 +1,29 @@
+<form action="">
+    <h2 mat-dialog-title> AGREGAR </h2>
+    <mat-dialog-content>
+
+        <mat-form-field>
+            <mat-label>PERFILES</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let perfil of listarRol" >
+                {{perfil.descripcion}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>RESPONSABLES</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let perfil of listaResponsable" [value]="perfil.idPersona">
+                {{perfil.apellidoPaterno}} - {{perfil.apellidoMaterno}} - {{perfil.nombres}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button>GUARDAR</button>
+    </mat-dialog-actions>
+</form>
