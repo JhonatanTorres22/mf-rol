@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { ListarResponsable, ListarRol, ListarUsuarioConPerfil } from 'src/app/core/models/rol.model';
+import { EliminarUsuarioConPerfil, ListarResponsable, ListarRol, ListarUsuarioConPerfil } from 'src/app/core/models/rol.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { RolMapper } from 'src/app/core/mappers/rol.mappers';
@@ -69,5 +69,11 @@ export class RolService {
         }
       })
     )
+   }
+
+   eliminarUsuario(codigoPersonaPerfil:number): Observable<EliminarUsuarioConPerfil>{
+    const requestBody:EliminarUsuarioConPerfil = {codigoPersonaPerfil}
+    console.log(requestBody, '**');
+    return this.httpClient.delete<EliminarUsuarioConPerfil>(this.urlEnviro + this.urlEliminarUsuarioConPerfil,  {body:requestBody})
    }
 }

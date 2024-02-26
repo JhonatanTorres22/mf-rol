@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { ListarUsuarioConPerfil } from 'src/app/core/models/rol.model';
+import { EliminarUsuarioConPerfil, ListarUsuarioConPerfil } from 'src/app/core/models/rol.model';
 import { RolService } from 'src/app/infraetructura/services/rol.service';
 import { AddEditRolComponent } from '../add-edit-rol/add-edit-rol.component';
 
@@ -43,6 +43,18 @@ export class ListarRolComponent implements OnInit {
       setTimeout(() => {
         this.listarUsuarioConPerfil()
       }, 450);
+    })
+  }
+
+  eliminarUsuario(usuarioConPerfil:ListarUsuarioConPerfil){
+    console.log(usuarioConPerfil.codigoPersonaPerfil);
+    
+    this.rolService.eliminarUsuario(usuarioConPerfil.codigoPersonaPerfil).subscribe({
+      next: (eliminarUsuario:EliminarUsuarioConPerfil) => {
+        console.log('eliminadoooo');
+        this.listarUsuarioConPerfil();
+        
+      }
     })
   }
 }

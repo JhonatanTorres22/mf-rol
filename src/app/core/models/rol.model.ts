@@ -34,6 +34,6 @@ export class crearPerfilConUsuario{
 
 export class EliminarUsuarioConPerfil{
     constructor(
-        codigoPersonPerfil:number
+        public codigoPersonaPerfil:number
     ){}
 }
